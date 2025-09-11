@@ -1,0 +1,7 @@
+env/
+build/
+test/
+misc/
+nuitka-crash-report.xml
+build.bat
+*.pdf
