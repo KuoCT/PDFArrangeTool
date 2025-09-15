@@ -65,10 +65,15 @@ jobs:
 
           echo "OUTPUT_FILE=$OUTPUT_FILE" >> $GITHUB_ENV
 
-      - name: Zip executable
+      - name: Zip the executable
+        shell: bash
         run: |
-          cd build
-          zip "${{ env.OUTPUT_NAME }}-${{ runner.os }}.zip" "${{ env.OUTPUT_FILE }}"
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            powershell.exe Compress-Archive -Path "build/${{ env.OUTPUT_FILE }}" -DestinationPath "build/${{ env.OUTPUT_NAME }}-${{ runner.os }}.zip"
+          else
+            cd build
+            zip "${{ env.OUTPUT_NAME }}-${{ runner.os }}.zip" "${{ env.OUTPUT_FILE }}"
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
