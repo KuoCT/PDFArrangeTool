@@ -60,6 +60,7 @@ jobs:
             --output-dir=build \
             --lto=no \
             --jobs=2 \
+            --assume-yes-for-downloads \
             $MAIN_SCRIPT
 
           echo "OUTPUT_FILE=$OUTPUT_FILE" >> $GITHUB_ENV
