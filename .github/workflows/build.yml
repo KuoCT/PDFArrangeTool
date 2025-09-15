@@ -59,7 +59,7 @@ jobs:
             --output-filename=$OUTPUT_FILE \
             --output-dir=build \
             --lto=no \
-            --jobs=2 \
+            --jobs=-1 \
             --assume-yes-for-downloads \
             $MAIN_SCRIPT
 
