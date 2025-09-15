@@ -520,7 +520,10 @@ class MainWindow(QMainWindow):
         self.pdf_list.clear()
 
 if __name__ == "__main__":
-    script_path_base = Path(__file__).resolve().parent 
+    if getattr(sys, 'frozen', False):
+        script_path_base = Path(sys.executable).resolve().parent
+    else:
+        script_path_base = Path(__file__).resolve().parent
     app = QApplication(sys.argv)
     icon_path = script_path_base / "icons" / "icon.png"
     app.setWindowIcon(QIcon(str(icon_path)))
